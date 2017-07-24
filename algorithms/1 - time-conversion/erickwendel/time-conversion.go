@@ -78,3 +78,11 @@ func To24HoursClock(code string) string {
 
  	return hour24H
  }
+
+func main() {
+	INPUT := "07:05:45PM"
+	result := To24HoursClock(INPUT)
+    fmt.Println("Input: ", INPUT)
+    fmt.Println("Result: ", result)
+
+}
