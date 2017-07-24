@@ -5,7 +5,7 @@ Meio Dia = 12:00:00PM / 12:00:00
 string: 07:05:45PM
 output: 19:05:45
 
-
+//OK
 string contains PM 
 	hora = string[:2]
 	if hora == 12
@@ -26,26 +26,55 @@ package main
 import (
   	"fmt"
 	"strings"
-  	// "io/ioutil"
+	"strconv"
   )
-  
+
+func GetFormatWithoutSymbol(code string) string {
+	return code[0: 8]
+}
+
+func IsMorning (code string) bool {
+	return strings.Contains(code, "AM" )
+}
+
+func GetHour(code string) string {
+	return code[0: 2]
+}
+func GetFormatWithoutHour(code string) string {
+	hourFormated := GetFormatWithoutSymbol(code)
+	return hourFormated[2:8]
+}
 func MidnightFormat(code string) string {
-	isMorning := strings.Contains("AM", code )
-    if  isMorning  {
-		fmt.Println("Not is morning")
-    	return code
+	IsMorning := IsMorning(code)
+    if  !IsMorning  {
+		return code
 	}
 
-	hour := code[0: 2]
+	hour := GetHour(code)
 	if hour != "12" {
-		fmt.Println("Not is midnight")
-    	return code
+		return code
 	}
 
-	hourFormated := code[0: 8]
-	finalHour := "00" + hourFormated[2:8]
+	finalHour := "00" + GetFormatWithoutHour(code)
  	return finalHour	
 }
-func To24Hours(code string) string {
- 	return ""
+
+func To24HoursClock(code string) string {
+	IsMorning := IsMorning(code)
+
+	if  IsMorning  {
+		return MidnightFormat(code)
+	}
+
+	hourStr := GetHour(code)
+	if "12" == hourStr {
+		return GetFormatWithoutSymbol(code)
+	}
+	hour, err := strconv.ParseInt(hourStr, 10, 32)
+	if err != nil {
+		fmt.Println("err", err)
+	}
+	hour24H := fmt.Sprint(hour  + 12) + GetFormatWithoutHour(code)
+
+ 	return hour24H
  }
