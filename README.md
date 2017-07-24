@@ -11,6 +11,7 @@
     - Implementação
     - Semantica
     - Cobertura de código (Code Converage)
+    - Resultado no Hackerrank
 
 ## Estrutura
     - Crie a branch: seunome-desafio
@@ -21,6 +22,6 @@
         > seu-nome
             > desafio.extensao
             > desafio.test.extensao
-            > ComoRodar.md
+            > ComoRodar.md (aqui deve-se colocar também o resultado do hackerrank)
 
     
