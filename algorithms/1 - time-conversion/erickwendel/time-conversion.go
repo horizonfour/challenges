@@ -24,18 +24,24 @@ string contains AM
 package main
   
 import (
-  	"fmt"
+  	// "fmt"
 	"strings"
   	// "io/ioutil"
   )
   
 func MidnightFormat(code string) string {
-    if strings.Index(code, "AM") == -1 {
-    	return "Nao e matutino"
+	index := strings.Index(code, "AM")
+    if  index == -1 {
+    	return "Not is morning"
 	}
-    fmt.Println("Index: ", code)
-	
- 	return ""	
+
+	hour := code[0: 2]
+	if hour != "12" {
+		return "Not is midnight"
+	}
+	hourFormated := code[0: 8]
+	finalHour := "00" + hourFormated[2:8]
+ 	return finalHour	
 }
 func To24Hours(code string) string {
 	// x := "chars@arefun"
