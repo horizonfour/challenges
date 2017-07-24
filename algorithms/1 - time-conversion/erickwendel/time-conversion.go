@@ -12,7 +12,7 @@ string contains PM
 		hora = 12:00
 	hora = hora + 12
 	return hora
-
+//OK
 string contains AM
 	hora = string[:2]
 	if hora == 12
@@ -24,21 +24,24 @@ string contains AM
 package main
   
 import (
-  	// "fmt"
+  	"fmt"
 	"strings"
   	// "io/ioutil"
   )
   
 func MidnightFormat(code string) string {
-	index := strings.Index(code, "AM")
-    if  index == -1 {
-    	return "Not is morning"
+	isMorning := strings.Contains("AM", code )
+    if  isMorning  {
+		fmt.Println("Not is morning")
+    	return code
 	}
 
 	hour := code[0: 2]
 	if hour != "12" {
-		return "Not is midnight"
+		fmt.Println("Not is midnight")
+    	return code
 	}
+
 	hourFormated := code[0: 8]
 	finalHour := "00" + hourFormated[2:8]
  	return finalHour	
