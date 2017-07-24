@@ -47,17 +47,5 @@ func MidnightFormat(code string) string {
  	return finalHour	
 }
 func To24Hours(code string) string {
-	// x := "chars@arefun"
-
-    // i := strings.Index(x, "@")
-
-    // fmt.Println("Index: ", i)
-	
  	return ""
  }
-// func main() {
-//   	fmt.Println("Hello QR Code")
- 
-//  	qrcode := GenerateQRCode("555-2368")
-//  	fmt.Println(qrcode)
-// }
