@@ -7,17 +7,15 @@ import java.util.regex.*;
 public class Solution {
 
     static String timeConversion(String s) {
-        String[] params = s.split(":");
-        String result = "";
-        if(s.contains("PM")){
-            String hour = Integer.toString(Integer.parseInt(params[0]) + 12);
-            if(hour.equals("24"))
-                hour = "00";
-            result = hour +":"+ params[1] +":"+ params[2].substring(0,2);
-            return result;
+        SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm:ssaa");
+        Date date = null;
+        try{
+           date = parseFormat.parse(s);
+        }catch(Exception e){
+
         }
-        result = params[0] +":"+ params[1] +":"+ params[2].substring(0,2);
-        return result;
+        return displayFormat.format(date);
     }
 
     public static void main(String[] args) {
@@ -27,4 +25,3 @@ public class Solution {
         System.out.println(result);
     }
 }
-
