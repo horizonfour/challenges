@@ -27,6 +27,9 @@ import (
   	"fmt"
 	"strings"
 	"strconv"
+	"regexp"
+	"bufio"
+	"os"
   )
 
 func GetFormatWithoutSymbol(code string) string {
@@ -47,7 +50,7 @@ func GetFormatWithoutHour(code string) string {
 func MidnightFormat(code string) string {
 	IsMorning := IsMorning(code)
     if  !IsMorning  {
-		return code
+		return ""
 	}
 
 	hour := GetHour(code)
@@ -58,12 +61,29 @@ func MidnightFormat(code string) string {
 	finalHour := "00" + GetFormatWithoutHour(code)
  	return finalHour	
 }
-
+func TimeIsValid (code string)  bool {
+	exp := `(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)[APap][mM]`
+	matchString := regexp.MustCompile(exp).MatchString
+	return matchString(code)
+	
+}
 func To24HoursClock(code string) string {
 	IsMorning := IsMorning(code)
+	
+	if len(code) < 10 {
+		return ""
+	}
+
+	if !TimeIsValid(code) {
+		return ""
+	}
 
 	if  IsMorning  {
-		return MidnightFormat(code)
+		hour := GetHour(code)
+		if "12" == hour {
+			return MidnightFormat(code)
+		}
+		return GetFormatWithoutSymbol(code)
 	}
 
 	hourStr := GetHour(code)
@@ -80,9 +100,8 @@ func To24HoursClock(code string) string {
  }
 
 func main() {
-	INPUT := "07:05:45PM"
-	result := To24HoursClock(INPUT)
-    fmt.Println("Input: ", INPUT)
-    fmt.Println("Result: ", result)
-
+	reader := bufio.NewReader(os.Stdin)
+    text, _ := reader.ReadString('\n')
+	result := To24HoursClock(text)
+    fmt.Println(result)
 }
