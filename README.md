@@ -10,7 +10,7 @@
 ## Pontos para a avaliação:
     - Implementação
     - Semantica
-    - Cobertura de código (Code Converage)
+    - Cobertura de código (Code Coverage)
     - Resultado no Hackerrank
 
 ## Estrutura
