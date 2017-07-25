@@ -17,11 +17,12 @@
     - Crie a branch: seunome-desafio
     - Após o termino, faça o merge com a master e faça o push
     Para os desafios vamos seguir a seguinte estrutura:
+    > nivel
+        > numero incremental - nome-desafio 
+        > DescricaoDesafio.md
+            > seu-nome
+                > desafio.extensao
+                > desafio.test.extensao
+                > ComoRodar.md (aqui deve-se colocar também o resultado do hackerrank)
     
-    > numero incremental - nome-desafio 
-        > seu-nome
-            > desafio.extensao
-            > desafio.test.extensao
-            > ComoRodar.md (aqui deve-se colocar também o resultado do hackerrank)
- 
     
