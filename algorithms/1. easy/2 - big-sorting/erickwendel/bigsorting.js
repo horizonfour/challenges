@@ -67,7 +67,7 @@ class BigSorting {
 		for (let i in arrays) {
 			const item = arrays[i]
 			if (item > menorElemento) continue
-				
+
 			menorElemento = item
 		}
 		return menorElemento
@@ -97,30 +97,28 @@ var input_stdin_array = "";
 var input_currentline = 0;
 
 process.stdin.on('data', function (data) {
-    input_stdin += data;
+	input_stdin += data;
 });
 
 process.stdin.on('end', function () {
-    input_stdin_array = input_stdin.split("\n");
-    main();    
+	input_stdin_array = input_stdin.split("\n");
+	main();
 });
 
 function readLine() {
-    return input_stdin_array[input_currentline++];
+	return input_stdin_array[input_currentline++];
 }
 
 /////////////// ignore above this line ////////////////////
 
 function main() {
-    var n = parseInt(readLine());
-    let item = [];
-    for(var item_i = 0; item_i < n; item_i++){
-       item[item_i] = readLine();
+	var n = parseInt(readLine());
+	let item = [];
+	for (var item_i = 0; item_i < n; item_i++) {
+		item[item_i] = readLine();
 	}
-    // your code goes here
-	const result = BigSorting.sort(item)
-	console.log('result', result)
-	// .map(i => console.log(i))
+	// your code goes here
+	BigSorting.sort(item).map(i => console.log(i))
 }
 
 
