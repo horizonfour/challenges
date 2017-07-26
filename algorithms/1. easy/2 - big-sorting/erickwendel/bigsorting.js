@@ -77,16 +77,52 @@ class BigSorting {
 		let iterable = true
 		let lista = []
 		while (iterable) {
-			const menor = this.menor(arrays)
-			let index = arrays.indexOf(menor)
+			const menorItem = this.menor(arrays)
+			let index = arrays.indexOf(menorItem)
 			delete arrays[index]
 			arrays = arrays.filter(item => item)
-			lista.push(menor)
+			lista.push(menorItem)
 			iterable = arrays.length != 0
 		}
 		return lista
 	}
 }
+
+//------------------------------------ HACKERRANK
+process.stdin.resume();
+process.stdin.setEncoding('ascii');
+
+var input_stdin = "";
+var input_stdin_array = "";
+var input_currentline = 0;
+
+process.stdin.on('data', function (data) {
+    input_stdin += data;
+});
+
+process.stdin.on('end', function () {
+    input_stdin_array = input_stdin.split("\n");
+    main();    
+});
+
+function readLine() {
+    return input_stdin_array[input_currentline++];
+}
+
+/////////////// ignore above this line ////////////////////
+
+function main() {
+    var n = parseInt(readLine());
+    let item = [];
+    for(var item_i = 0; item_i < n; item_i++){
+       item[item_i] = readLine();
+	}
+    // your code goes here
+	const result = BigSorting.sort(item)
+	console.log('result', result)
+	// .map(i => console.log(i))
+}
+
 
 module.exports = BigSorting
 
