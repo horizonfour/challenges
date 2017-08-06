@@ -16,6 +16,7 @@ test('right array', () => {
   expect(s.rightArr([1, 2, 3, 4, 5, 6])).toEqual([4, 5, 6])
   expect(s.rightArr([1, 2, 3, 4, 5])).toEqual([3, 4, 5])  
   expect(s.rightArr([1])).toEqual([1])  
+  expect(s.rightArr([1, 2])).toEqual([2])
 })
 
 test('middle index', () => {
@@ -25,10 +26,9 @@ test('middle index', () => {
 })
 
 test('compare', () => {
-  expect(s.compare([3], [4])).toEqual([3, 4])
-  expect(s.compare([3], [6, 2])).toEqual([2, 3, 6]) 
-  expect(s.compare([3, 6], [2])).toEqual([2, 3, 6])   
-  expect(s.compare([], [2])).toEqual([2])  
+  expect(s.compareArrs([3], [4])).toEqual([3, 4])
+  expect(s.compareArrs([3, 6], [2])).toEqual([2, 3, 6])   
+  expect(s.compareArrs([], [2])).toEqual([2])  
 })
 
 test('divide', () => {
