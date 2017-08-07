@@ -24,7 +24,7 @@ Nota: Uma substring de uma string `S` é uma subseqüência composta por zero ou
 
 ### Formato de saída
 
- - Em uma nova linha, imprima o comprimento mínimo da substring substituído para tornar `s` estável.
+ - Em uma nova linha, imprima o comprimento mínimo da substring substituída para tornar `s` estável.
 
 ### Entrada de exemplo
 
@@ -38,7 +38,7 @@ GAAATAAA
 5
 ```
 
-### Exmplicação
+### Explicação
  
  - Uma solução ideal é substituir uma substring `AAATA` por `TTCCG`, resultando em `GTTCCGAA`. A substring substituída tem o comprimento `5`, então imprimimos` 5` em uma nova linha.
 
