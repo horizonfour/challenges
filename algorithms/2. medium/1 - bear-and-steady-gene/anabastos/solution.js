@@ -5,7 +5,7 @@ const processData = input => composed(getStringInput)
 const getNInput = input => parseInt(R.split('\n')(input)[0], 10)
 const getStringInput = input => R.split('\n')(input)[1]
 
-const getN= R.divide(R.__, 4)
+const getN = R.divide(R.__, 4)
 
 const getBalance = s => R.reduce((acc, letter) =>  R.ifElse(
     R.has(letter),
@@ -21,17 +21,24 @@ const getBalanceComparison = n => R.cond([
 ])
 
 const isBalanced = R.equals(0)
-const allBalanced = R.all(isBalanced)(R.values)
+const allBalanced = obj => R.all(isBalanced)(R.values(obj))
 
-const getSubstring = s => false
-const getSubstringSize = i => false
+const getSubstring = obj => {
+  
+}
+
+const isPositive = R.curry((obj, letter) => R.prop(letter, obj) )
+const getMissingLetter = obj => R.reduce((acc, letter) => R.prop(letter, acc) ? acc : R.assoc(letter, -2, acc), obj, ['A', 'C', 'T', 'G'])
+
+const getSubstringSize = s => false
 
 const composed = R.compose(
   getSubstringSize,
   getSubstring,
+  getMissingLetter,
   getBalanceComparison,
   getBalance,
 )
 
 
-module.exports = {getN, getBalance, getBalanceComparison, allBalanced, getSubstring, getSubstringSize}
+module.exports = {getN, getBalance, getBalanceComparison, getMissingLetter, allBalanced, getSubstring, getSubstringSize}

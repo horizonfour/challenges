@@ -26,8 +26,12 @@ test('all balanced', () => {
   expect(s.allBalanced({A: 0, B: -1, C: 0})).toEqual(false)
 })
 
+test('get missing letter', () => {
+  expect(s.getMissingLetter({A: 4, G: -1, T: -1})).toEqual({A: 4, G: -1, T: -1, C: -2})
+})
+
 test('get substring', () => {
-  expect(s.getSubstring(true)).toEqual(true)
+  expect(s.getSubstring({A: 4, G: -1, G: -1, }, 'GAAATAAA')).toEqual('AAATA')
 })
 
 test('get substring size', () => {
